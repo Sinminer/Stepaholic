@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Stepaholic</string>
+    <string name="stepaholic">Stepaholic</string>
+    <string name="kilometres">Kilometres</string>
+    <string name="miles">Miles</string>
+    <string name="total_steps">Total Steps</string>
+</resources>
