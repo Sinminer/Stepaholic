@@ -30,20 +30,23 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent resetIntent = new Intent();
                 resetIntent.putExtra("reset",steps);
                 setResult(RESULT_OK,resetIntent);
+
             }
+
         });
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pause();
                 Intent pauseIntent = new Intent();
-                pauseIntent.putExtra("reset",steps);
+                pauseIntent.putExtra("reset",userRunning);
                 setResult(RESULT_OK,pauseIntent);
             }
         });
     }
     public void resetSteps(){
         steps = 0;
+        Toast.makeText(this,"Set steps to 0",Toast.LENGTH_SHORT).show();
     }
     public void pause(){
         if (userRunning){

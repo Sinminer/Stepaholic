@@ -21,12 +21,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView kilometreTextView;
     boolean userRunning = false;
     SensorManager sensorManager = null;
-    float steps = 0;
+    float steps;
     float miles = steps / 2000;
     float kilometres = steps / 1500;
     ImageButton settingsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        steps = 5;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (stepSensor == null){
             Toast.makeText(this,"Step sensor not detected",Toast.LENGTH_SHORT).show();
+            steps = 5;
         }else {
             sensorManager.registerListener(this,stepSensor,SensorManager.SENSOR_DELAY_UI);
         }
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
     if (userRunning){
         steps = event.values[0];
+        steps = 5;
         stepsTextView.setText(String.format("%s", steps));
         milesTextView.setText(String.format("%s", miles));
         kilometreTextView.setText(String.format("%s", kilometres));
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (requestCode == 1){
             if (resultCode == RESULT_OK){
                 steps = data.getIntExtra("result",0);
+                userRunning = data.getBooleanExtra("result",false);
             }
         }
     }
