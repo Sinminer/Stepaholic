@@ -4,4 +4,11 @@
     <string name="kilometres">Kilometres</string>
     <string name="miles">Miles</string>
     <string name="total_steps">Total Steps</string>
+    <string name="todo">TODO</string>
+    <string name="settings">Settings</string>
+    <string name="reset">Reset</string>
+    <string name="pause_the_step_tracker">Pause the step tracker</string>
+    <string name="reset_your_steps">Reset your steps</string>
+    <string name="pause">Pause</string>
+    <string name="_0">0</string>
 </resources>
