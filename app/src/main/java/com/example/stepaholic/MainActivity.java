@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
     if (userRunning){
         steps = event.values[0];
-        steps = 5;
         stepsTextView.setText(String.format("%s", steps));
         milesTextView.setText(String.format("%s", miles));
         kilometreTextView.setText(String.format("%s", kilometres));
@@ -78,10 +77,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
     public void settingsOpen(){
         Intent intent = new Intent(this,SettingsActivity.class);
-        intent.putExtra("",steps);
-        intent.putExtra("",userRunning);
+        intent.putExtra(SettingsActivity.STEPS,steps);
+        intent.putExtra(SettingsActivity.RUNNING,userRunning);
         startActivityForResult(intent,1);
     }
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (requestCode == 1){
             if (resultCode == RESULT_OK){
                 steps = data.getIntExtra("result",0);
-                userRunning = data.getBooleanExtra("result",false);
+                userRunning = data.getBooleanExtra("pause",false);
             }
         }
     }

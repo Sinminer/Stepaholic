@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
+    final static String STEPS = "Steps";
+    final static String RUNNING = "Running";
     int steps;
     boolean userRunning;
     @Override
@@ -17,8 +19,8 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         Intent intent = getIntent();
-        steps = intent.getIntExtra("Steps",0);
-        userRunning = intent.getBooleanExtra("Running",true);
+        steps = intent.getIntExtra(STEPS,0);
+        userRunning = intent.getBooleanExtra(RUNNING,true);
 
         Button resetButton = findViewById(R.id.resetButton);
         Button pauseButton = findViewById(R.id.pauseButton);
@@ -39,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pause();
                 Intent pauseIntent = new Intent();
-                pauseIntent.putExtra("reset",userRunning);
+                pauseIntent.putExtra("pause",userRunning);
                 setResult(RESULT_OK,pauseIntent);
             }
         });
@@ -54,4 +56,5 @@ public class SettingsActivity extends AppCompatActivity {
             userRunning = false;
         }else Toast.makeText(this, "Unpausing", Toast.LENGTH_SHORT).show();
     }
+
 }
