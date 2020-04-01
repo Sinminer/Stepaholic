@@ -68,6 +68,8 @@
         android:layout_height="114dp"
         android:gravity="center"
         android:layout_weight="1"
+        android:text="@string/_0"
+        android:textSize="40sp"
         tools:ignore="NestedWeights" />
     <TextView
         android:id="@+id/stepsDisplay"
@@ -84,7 +86,8 @@
             android:id="@+id/mileDisplay"
             android:layout_width="130dp"
             android:layout_height="114dp"
-
+            android:text="@string/_0"
+            android:textSize="40sp"
             android:gravity="center" />
     </LinearLayout>
 
