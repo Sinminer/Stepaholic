@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     //Creating final static string for use in intent passing.
      final static String RESET = "reset";
      final static String PAUSE= "pause";
+     final static float STEPS = 0;
      //Creating the text views to display the steps, miles and kilometres
     private TextView stepsTextView;
     private TextView milesTextView;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     // if its active it starts as a null to error check.
     SensorManager sensorManager = null;
     //Using floats for the variables so the kilometres and miles get displayed a decimal
-    float steps;
+    float steps = STEPS;
     float miles = steps / 2000;
     float kilometres = steps / 1500;
 //Using an image button to display the settings page
@@ -106,5 +107,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 userRunning = data.getBooleanExtra(PAUSE,false);
             }
         }
+    }
+
+    public void setSteps(float steps) {
+        this.steps = steps;
+    }
+
+    public float getSteps() {
+        return steps;
+    }
+
+    public void setUserRunning(boolean userRunning) {
+        this.userRunning = userRunning;
+    }
+
+    public boolean isUserRunning() {
+        return userRunning;
     }
 }

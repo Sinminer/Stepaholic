@@ -10,8 +10,25 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+    private MainActivity mainActivity = new MainActivity();
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
+    public void stepCheck() {
+        assertEquals(0,mainActivity.getSteps(),0.1);
+
+}
+@Test
+public void extraStepCheck(){
+        mainActivity.setSteps(50);
+        assertEquals(50.0,mainActivity.getSteps(),0.1);
+}
+@Test
+    public void userRunningCheck(){
+        assertFalse(mainActivity.isUserRunning());
+}
+@Test
+    public void setUserRunningCheck(){
+        mainActivity.setUserRunning(true);
+        assertTrue(mainActivity.isUserRunning());
+}
+
 }
